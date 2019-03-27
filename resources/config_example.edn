@@ -1,0 +1,8 @@
+{:credentials  {:github   {:username ""
+                           :token    ""}
+                :bugzilla {:username ""
+                           :password ""}
+                :rocketchat {:username "" servername: "" :password ""}}}
+
+;; rocketchat-server
+{:reminders [{:channel-name: "" :time: ""}]}

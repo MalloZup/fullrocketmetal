@@ -1,6 +1,5 @@
-(ns fullrocketmetal.core)
+(ns fullrocketmetal.core
+  (require [clojure.edn :as edn])
 
 (defn -main
-  "I don't do a whole lot."
-  [& args]
   (println "Hello, World!"))
