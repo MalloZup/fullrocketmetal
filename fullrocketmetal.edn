@@ -2,7 +2,7 @@
                            :token    ""}
                 :bugzilla {:username ""
                            :password ""}
-                :rocketchat {:username "dmaiocchi" :servername "testserver" :password "roba"}}}
+                :rocketchat {:username "dmaiocchi" :servername "https://myuri-server.com/api/v1/login" :password "roba"}}}
 
 ;; rocketchat-server reminders
 
