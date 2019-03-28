@@ -4,5 +4,5 @@
                            :password ""}
                 :rocketchat {:username "foo" :servername "testserver" :password "secret"}}}
 
-;; rocketchat-server
-{:reminders [{:channel-name: "" :time: ""}]}
+;; rocketchat-server reminders
+{:reminders [{:channel-name "" :time "" :message ""}]}
