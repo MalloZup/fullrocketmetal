@@ -2,7 +2,7 @@
                            :token    ""}
                 :bugzilla {:username ""
                            :password ""}
-                :rocketchat {:username "foo" :servername "testserver" :password "secret"}}}
+                :rocketchat {:username "dmaiocchi" :servername "testserver" :password "roba"}}}
 
 ;; rocketchat-server reminders
 
