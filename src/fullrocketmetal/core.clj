@@ -1,4 +1,5 @@
 (ns fullrocketmetal.core
+  ;; todo this will become the rocketchat lib in future.
   (:require [fullrocketmetal.http :as rocket]))
 
 (defn read-config [config-file]
@@ -11,16 +12,11 @@
   (-> config-map :credentials :rocketchat :username))
 
 (def get-rocket-password
-    (-> config-map :credentials :rocketchat :password))
+  (-> config-map :credentials :rocketchat :password))
   
-
 (def get-rocket-server
-      (-> config-map :credentials :rocketchat :servername))
+  (-> config-map :credentials :rocketchat :servername))
     
-
-
 (defn -main
   [& args]
-  (let [response  (rocket/init-client get-rocket-server get-rocket-user get-rocket-password)]
-  (println "response1's status: " (:status @response))
-  ))
+  ( println rocket/init-client get-rocket-server get-rocket-user get-rocket-password))
