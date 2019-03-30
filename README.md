@@ -1,3 +1,5 @@
+<p align="center"><img src="src/fullrocketmetal/logo/logotype-horizontal.png"></p>
+
 # fullrocketmetal
 
 A simple bot for rocketchat powered by LISP superpowers (CLOJURE).
