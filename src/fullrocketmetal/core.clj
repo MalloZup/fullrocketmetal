@@ -1,22 +1,18 @@
 (ns fullrocketmetal.core
-  ;; todo this will become the rocketchat lib in future.
-  (:require [fullrocketmetal.http :as rocket]))
+  (:require [missile.channels :as channels]
+    [missile.config :as rocketchat]
+    [missile.chat :as chat])))
 
-(defn read-config [config-file]
-  (slurp config-file))
+;; TODO this should be called in a iteration
+;;(def channel-id (channels/get-channel-id "rock"))
 
-(def config-map 
-   (clojure.edn/read-string (read-config "fullrocketmetal.edn")))
+(def reminders
+  ((clojure.edn/read-string (slurp "reminders.edn"))))
 
-(def get-rocket-user
-  (-> config-map :credentials :rocketchat :username))
-
-(def get-rocket-password
-  (-> config-map :credentials :rocketchat :password))
-  
-(def get-rocket-server
-  (-> config-map :credentials :rocketchat :servername))
-    
-(defn -main
-  [& args]
-  ( println rocket/init-client get-rocket-server get-rocket-user get-rocket-password))
+(defn send-message  []
+  (rocketchat.config/set-config-from-file ".rocketchat.edn")
+  ( println (channels/list!) )
+  let
+  ;; read channels name, message etc.
+  ;; iterate here over a list of channels
+  (chat/sendMessage channnel-id message))
