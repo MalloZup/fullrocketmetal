@@ -1,8 +1,8 @@
-(ns fullrocketmetal.sheduler
-   (:require [clojurewerkz.quartzite.scheduler :as qs]
+(ns fullrocketmetal.scheduler
+  (:require [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.triggers :as t]
             [clojurewerkz.quartzite.jobs :as j]
-        [clojurewerkz.quartzite.jobs :refer [defjob]]
+            [clojurewerkz.quartzite.jobs :refer [defjob]]
             [clojurewerkz.quartzite.schedule.cron :refer [schedule cron-schedule]]))
 
 (defjob NoOpJob
