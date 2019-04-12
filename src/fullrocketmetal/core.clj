@@ -37,12 +37,10 @@
   ;; TODO: would be nice to send this messages in parallel (futures)
   ;; send message to the channel name given
     (map (fn [channel-id message] (chat/sendMessage channel-id message)) channel-id-and-message)))
-  ;;(chat/sendMessage channel-id message)
 
- 
   ;; TODO: in the main we should act like a daemon, 
   ;; 1) refresh/re-read configuration if something has changed
-  ;; 2) check
+  ;; 2) send reminders and do other actions periodically. 
   ;; 3) print debug infos ( rate-limiting)
   (defn -main []
     ;; read reminders map configuration
