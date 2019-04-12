@@ -1,7 +1,5 @@
 ![logo](doc/logotype-horizontal.png)
 
-# fullrocketmetal
-
 
 An event bot for rocketchat powered by functional clojure lang.
 
