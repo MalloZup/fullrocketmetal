@@ -3,6 +3,7 @@
             [missile.config :as config]
             [fullrocketmetal.reminders :as reminders]
             [clojurewerkz.quartzite.scheduler :as qs]
+            [fullrocketmetal.sheduler :as scheduler]
             [missile.chat :as chat]))
 
 (defn init-rocketchat-client  []
@@ -18,4 +19,4 @@
   ;; 3) print debug infos ( rate-limiting)
   (defn -main []
     (init-rocketchat-client)
-    (reminders/send-reminders))
+    (reminders/send-remindgiers))
