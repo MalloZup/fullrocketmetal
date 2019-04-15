@@ -2,8 +2,6 @@
   (:require [missile.channels :as channels]
             [missile.config :as config]
             [fullrocketmetal.reminders :as reminders]
-            [clojurewerkz.quartzite.scheduler :as qs]
-            [fullrocketmetal.scheduler :as scheduler]
             [missile.chat :as chat]))
 
 (defn init-rocketchat-client  []
