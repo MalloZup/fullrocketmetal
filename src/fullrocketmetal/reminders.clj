@@ -9,14 +9,9 @@
   (get-in (events) [:reminders]))
 
 (defn send-single-reminder [reminder-map]
-  (chat/sendMessage (missile.channels/get-channel-id (:channel-name reminder-map)) (:message reminder-map)))
-
-;; TODO: would be nice to send this messages in parallel (futures) or investigate of other solutions
-(defn send-all-reminders []
-  (map send-single-reminder (get-reminders)))
+  (chat/sendMessage  (missile.channels/get-channel-id (:channel-name reminder-map)) (:message reminder-map)))
 
 ;; send all messages
 (defn send-reminders []
   "dispatch message/reminder to rocketchat based on configuration"
-  (send-all-reminders))
-
+  (map send-single-reminder (get-reminders)))
