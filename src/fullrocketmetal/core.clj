@@ -2,9 +2,20 @@
   (:require [missile.channels :as channels]
             [missile.config :as config]
             [fullrocketmetal.reminders :as reminders]
+            [clojurewerkz.quartzite.scheduler :as qs]
+            [clojurewerkz.quartzite.triggers :as t]
+            [clojurewerkz.quartzite.jobs :as j]
+            [clojurewerkz.quartzite.jobs :refer [defjob]]
+            [clojurewerkz.quartzite.schedule.simple :refer [schedule with-repeat-count with-interval-in-milliseconds]]
             [missile.chat :as chat])
    (:gen-class))
-  
+
+(defjob NoOpJob
+  [ctx]
+  (comment "Does nothing")
+  (println "doing stuff")
+  )
+
 (defn init-rocketchat-client  []
   (config/set-config-from-file ".rocketchat.edn"))
 
@@ -27,6 +38,15 @@
   ;; 3) print debug infos ( rate-limiting)
 (defn -main []
   (init-rocketchat-client) 
-
-  (daemonize)
-)
+    (let [s   (-> (qs/initialize) qs/start)
+    job (j/build
+          (j/of-type NoOpJob)
+          (j/with-identity (j/key "jobs.noop.1")))
+    trigger (t/build
+              (t/with-identity (t/key "triggers.1"))
+              (t/start-now)
+              (t/with-schedule (schedule
+                                 (with-repeat-count 10)
+                                 (with-interval-in-milliseconds 200))))]
+  (qs/schedule s job trigger))
+  (daemonize))
