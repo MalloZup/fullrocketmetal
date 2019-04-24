@@ -14,7 +14,7 @@
 (defn init-rocketchat-client  []
   (config/set-config-from-file ".rocketchat.edn"))
 
-;; we might call this in future with core.async for moment is ok.
+
 (defn daemonize []
   (while true
     ;; todo watch if a file changed (conf) and perfom some operation
@@ -24,9 +24,8 @@
     ;; print debug infos  ;; TODO
     (flush)
 ))
-  ;; TODO: setup the time logic for scheduling message at given time. ( before 5 min etc)
-
-  ;; TODO: in the main we should act like a daemon, f
+ 
+  ;; TODO: in the main we should act like a daemon,
   ;; 1) refresh/re-read configuration if something hafs changed
   ;; 3) print debug infos ( rate-limiting)
 
@@ -65,16 +64,13 @@
 ;; it can be same for all. ( maybe later extend this.)
 (defn schedule-job-and-trigger [jobs-map]
     (let [s  (-> (qs/initialize) qs/start)
-        job (create-rocket-msg-job jobs-map)
-        trigger (create-rocket-msg-trigger)]
-  ;; TODO: investigate on this call
-  (qs/schedule s job trigger)))
-
-(defn schedule-all-jobs-and-triggers [jobs]
-  (doall (map schedule-job-and-trigger jobs) ))
-
+            job (create-rocket-msg-job jobs-map)
+            trigger (create-rocket-msg-trigger)]
+        ;; TODO: investigate on this call
+        (qs/schedule s job trigger)))
 
 (defn -main []
   (init-rocketchat-client) 
-  (schedule-all-jobs-and-triggers jobs-fake)
+  ;; https://stuartsierra.com/2015/08/10/clojure-donts-redundant-map
+  (run! schedule-job-and-trigger jobs-fake)
   (daemonize))
