@@ -2,6 +2,7 @@
   (:require [missile.channels :as channels]
             [missile.config :as config]
             [fullrocketmetal.reminders :as reminders]
+            [fullrocketmetal.scheduler :as rock-sched]
             [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.conversion :as qc]
             [clojurewerkz.quartzite.triggers :as t]
@@ -14,7 +15,6 @@
 (defn init-rocketchat-client  []
   (config/set-config-from-file ".rocketchat.edn"))
 
-
 (defn daemonize []
   (while true
     ;; todo watch if a file changed (conf) and perfom some operation
@@ -24,11 +24,6 @@
     ;; print debug infos  ;; TODO
     (flush)
 ))
- 
-  ;; TODO: in the main we should act like a daemon,
-  ;; 1) refresh/re-read configuration if something hafs changed
-  ;; 3) print debug infos ( rate-limiting)
-
 
 (defjob rocket-message-job  [ctx]
   (let [data (qc/from-job-data ctx)
@@ -44,14 +39,6 @@
          ;; don't use for moment job identity.  A possible one could be "channel-name+test-message+time" concatenate ID and maybe some random
          ;; (j/with-identity (j/key "jobs.noop.1"))))
 
-(defn create-rocket-msg-trigger []
-  (t/build
-    ;; TODO: think later on UID if needed
-    ;; (t/with-identity (t/key "triggers.1"))
-    (t/start-now)
-    (t/with-schedule (schedule
-      (with-repeat-count 10)
-      (with-interval-in-milliseconds 200)))))
 
 ;; TODO REMOVE THIS LATER
 (def jobs-fake 
@@ -60,12 +47,12 @@
     {:channel-name "caasp-feature-squad" :chron-schedule "16.00" :message "i'm just a text after the default message"},
   ])
 
-;; create rocket-chat msg job with only 1 trigger 
-;; it can be same for all. ( maybe later extend this.)
+
 (defn schedule-job-and-trigger [jobs-map]
+
     (let [s  (-> (qs/initialize) qs/start)
             job (create-rocket-msg-job jobs-map)
-            trigger (create-rocket-msg-trigger)]
+            trigger (rock-sched/create-rocket-msg-cron-trigger)]
         ;; TODO: investigate on this call
         (qs/schedule s job trigger)))
 
