@@ -22,8 +22,7 @@
       (Thread/sleep interval))
     (println "sleeping 5 min")
     ;; print debug infos  ;; TODO
-    (flush)
-))
+    (flush)))
 
 (defjob rocket-message-job  [ctx]
   (let [data (qc/from-job-data ctx)
