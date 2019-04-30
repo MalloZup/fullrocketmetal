@@ -3,7 +3,15 @@
 
 An event bot for rocketchat powered by functional clojure lang.
 
+## Released versions:
+
+for a released version, take a look at GitHub releases.
+
 # Quickstart: (experimental)
+
+## Configuration
+
+Make sure this 2 edn files are in the same directory to the JAR clojure file you execute.
 
 1) create a `.rocketchat.edn` file in same dir of `fullrocketmetal jar` with following content:
 
@@ -22,7 +30,12 @@ An event bot for rocketchat powered by functional clojure lang.
 
 this will send to `channel-name` a `message` which is a reminder, and  you can specify the frequence of the message via `cron-schedule` which follow the crontab syntax.
 
-3) run
+## Build from src
+
+3) Use `lein uberjar` to build the jar
+
+4) Use `java -jar fullrocketmetal-VERSION-standalone.jar`. This will run `fullrocketmetal` demo.
+
 
 ## Devel:
 
