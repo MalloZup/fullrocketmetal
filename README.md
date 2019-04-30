@@ -1,6 +1,5 @@
 ![logo](doc/logotype-horizontal.png)
 
-
 An event bot for rocketchat.
 
 ## Released versions:
@@ -11,7 +10,8 @@ for a released version, take a look at GitHub releases.
 
 As user of a Rocketchat, you can automatize your regular meeting events with `fullrocketmetal` easy.
 
-Fullrocketmetal let you schedule in a crontab regulary syntax, a regular event/reminder, which will sent to a channel name of your server.
+Fullrocketmetal let you schedule in a crontab regulary syntax, a regular `message` event/reminder, which will sent to a channel name of your server.
+
 
 ## Quickstart
 
