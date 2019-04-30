@@ -18,9 +18,7 @@
   (let [data (qc/from-job-data ctx)
         ch-name (data "ch-name")
         text-message (data "text-message")]
-    ;; (chat/sendMessage  (channels/get-channel-id ch-name) text-message)
-    (println ch-name)
-    (println text-message)))
+    (chat/sendMessage  (channels/get-channel-id ch-name) text-message)))
 
 (defn create-rocket-msg-job [list-jobs]
   (j/build
