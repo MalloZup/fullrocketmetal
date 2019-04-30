@@ -43,17 +43,10 @@ this will send to `channel-name` a `message` which is a reminder, and  you can s
 
 ## Build from src
 
-3) Use `lein uberjar` to build the jar
+Use `lein uberjar` to build the jar
 
-4) Use `java -jar fullrocketmetal-VERSION-standalone.jar`.
+Use `java -jar fullrocketmetal-VERSION-standalone.jar`.
  This will run `fullrocketmetal` 
-
-
-## Devel:
-
-`lein repl` in the project for using REPL.
-
-`lein run` for running it
 
 
 # Technical infos:
