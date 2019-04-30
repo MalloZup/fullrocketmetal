@@ -54,3 +54,10 @@ Use `java -jar fullrocketmetal-VERSION-standalone.jar`.
 This project is using rocketchat missile library and quartz scheduler.
 
 ( https://github.com/MalloZup/missile)
+
+
+Fullrocketmetal plan only to implement the rocketchat Messanger.
+
+I plan maybe to implent a generic bot where one could plugin others client (Slack,irc etc) using same syntax.
+
+https://github.com/MalloZup/memoro
