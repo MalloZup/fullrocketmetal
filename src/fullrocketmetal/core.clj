@@ -18,9 +18,7 @@
 (defn daemonize []
   (while true
       (let [interval (* 5 60 1000)] 
-      (Thread/sleep interval))
-    (println "------------------")
-    (flush)))
+      (Thread/sleep interval))))
 
 (def events-reminders
   (reminders/get-reminders))
